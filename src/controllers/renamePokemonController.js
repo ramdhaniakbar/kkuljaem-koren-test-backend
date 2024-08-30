@@ -33,12 +33,14 @@ const renamePokemon = async (req, res) => {
         await db.myPokemon.update({
           name: splitName[0] + "-" + 1,
         }, { where: { username: req.query.username } })
+        nextFibonacci = 1
 
       } else if (splitName[1] == "1" && !myPokemon.number_one_is_out) {
         await db.myPokemon.update({
           name: splitName[0] + "-" + 1,
           number_one_is_out: true,
         }, { where: { username: req.query.username } })
+        nextFibonacci = 1
 
       } else {
          await db.myPokemon.update({
@@ -51,12 +53,13 @@ const renamePokemon = async (req, res) => {
         name: myPokemon.name + "-" + 0,
         is_renamed: true,
       }, { where: { username: req.query.username } })
+      nextFibonacci = 0
     }
 
     await myPokemon.reload()
 
     const data = {
-      next_fibonacci: nextFibonacci,
+      number_fibonacci: nextFibonacci,
       my_pokemon: myPokemon
     }
 
