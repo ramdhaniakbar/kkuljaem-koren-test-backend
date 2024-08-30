@@ -2,6 +2,7 @@ const router = require("express").Router()
 const { check, query } = require("express-validator")
 const db = require('../db/models')
 const catchPokemonController = require("../controllers/catchPokemonController")
+const { Op } = require("sequelize")
 
 router.get("/catch-pokemon", catchPokemonController.catchPokemon)
 router.post(
@@ -20,7 +21,7 @@ router.post(
          const username = await db.myPokemon.findOne({
              where: { 
                 name: {
-                    [Op.ne]: req.body.name
+                    [Op.ne]: req.query.name
                 },
                  username: {
                      [Op.iLike]: value
