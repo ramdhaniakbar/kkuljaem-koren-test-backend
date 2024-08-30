@@ -29,10 +29,12 @@ app.get('/', (req, res) => {
 const catchPokemonRouter = require('./src/routes/catchPokemonRouter')
 const releasePokemonRouter = require('./src/routes/releasePokemonRouter')
 const renamePokemonRouter = require('./src/routes/renamePokemonRouter')
+const myPokemonRouter = require('./src/routes/myPokemonRouter')
 const url = '/api/v1'
 
 app.use(url, releasePokemonRouter)
 app.use(url, catchPokemonRouter)
 app.use(url, renamePokemonRouter)
+app.use(url, myPokemonRouter)
 
 module.exports = app

@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const { check, query } = require("express-validator")
+const { query } = require("express-validator")
 const renamePokemonController = require("../controllers/renamePokemonController")
 
 router.post(
