@@ -21,7 +21,7 @@ router.post(
          const username = await db.myPokemon.findOne({
              where: { 
                 name: {
-                    [Op.ne]: req.query.name
+                    [Op.eq]: req.query.name
                 },
                  username: {
                      [Op.iLike]: value
